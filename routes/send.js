@@ -6,8 +6,8 @@ class SendRouter {
     constructor(BandwidthClient) {
         this.bwClient = BandwidthClient;
         this.router = express.Router();
-        this.router.post("/text", this.sendText.bind(this));
-        this.router.post("/call", this.someFunc.bind(this));
+        // this.router.post("/text", this.someFunc.bind(this));
+        // this.router.post("/call", this.someFunc.bind(this));
     }
 
     sendText(destination, text){

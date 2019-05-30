@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  div.container
+    div.row 
+        div.col.centerEverything.fullHeight
+            h1.lighter Bandwidth Notify
+            p Check in with your kids based on IoT events, such as unlocking doors, motion, and more.
+            form(action="placeCall" method="post")
+                div.form-group.align-items-center
+                    div.flex-row 
+                        input.form-control.phone(type="text" id="fromNumber" name="fromNumber" placeholder="Your Phone Number")
+                        input.leftMargin.form-control.phone(type="text" id="toNumber" name="toNumber" placeholder="Their Phone Number" maxlength="11")
+                    div.centerEverything
+                        button.btn.callButton(type="submit") Make Call

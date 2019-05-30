@@ -17,11 +17,17 @@ const BandwidthClient = new Bandwidth({
     userId: keys.userId,
     apiToken: keys.apiToken,
     apiSecret: keys.apiSecret
-})
+});
 
 // Body parser for text messages etc.
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// set view engine
+app.set('view engine', 'pug');
+
+// set up stylesheet
+app.use(express.static(__dirname + '/public'));
 
 // set up routes
 let send = new SendRouter(BandwidthClient);
@@ -32,8 +38,18 @@ app.use("/callback", receive.router);
 
 // Home page GET
 app.get("/", (req, res) => {
-    res.json({ msg: "Hello, and welcome to the notifications app" });
-})
+    res.render("index");
+});
+
+app.post("/placeCall", (req, res)=>{
+    var fromNumber = req.body.fromNumber.replace(/\D/g,'');
+    var toNumber = req.body.toNumber.replace(/\D/g,'');
+
+    // TODO: now just make a post request using these numbers.
+    
+    // probably only render this if there is a problem.
+    res.render("call-sent");     
+});
 
 // Local listen
 app.listen(PORT, () => {

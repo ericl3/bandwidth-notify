@@ -1,0 +1,39 @@
+body{
+    background-color: #4d2966;
+    color: white;
+    font-family: 'Overpass', sans-serif !important;
+}
+
+.fullHeight{
+    height: 100vh;
+}
+
+.centerEverything{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.lighter{
+    font-weight: lighter;
+}
+
+.callButton{
+    background-color: #a95adf;
+    color: white;
+    border-radius: 25px;
+    padding: 10px 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.leftMargin{
+    margin-left: 5px;
+}
