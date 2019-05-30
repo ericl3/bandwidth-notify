@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 let send = new SendRouter(BandwidthClient);
 let receive = new CallbackRouter(BandwidthClient);
 
-app.use("/send", send.router)
+app.use("/send", send.router);
 app.use("/callback", receive.router);
 
 // Home page GET
