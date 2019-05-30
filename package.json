@@ -1,0 +1,27 @@
+{
+  "name": "voice-checkin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "node-bandwidth": "^3.0.2",
+    "pug": "^2.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericl3/bandwidth-notify.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ericl3/bandwidth-notify/issues"
+  },
+  "homepage": "https://github.com/ericl3/bandwidth-notify#readme"
+}

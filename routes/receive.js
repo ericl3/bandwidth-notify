@@ -31,7 +31,7 @@ class CallbackRouter {
                 break;
             case "gather":
                 if (req.body.digits === "1") {
-                    this.sendRouter.sendText("+16099554542", "Thank you for asking. I am OK");
+                    this.sendRouter.sendText(this.sendRouter.receiver, "Thank you for asking. I am OK");
                     console.log("pressed 1");
                     responseType = "quickNotify";
                 } else if (req.body.digits === "2") {
@@ -50,11 +50,19 @@ class CallbackRouter {
                 break;
             case "transcription":
                 if (req.body.state === "completed") {
-                    this.sendRouter.sendText("+16099554542", req.body.text);
+                    this.sendRouter.sendText(this.sendRouter.receiver, req.body.text);
                     console.log(req.body.text);
                     console.log("Transcribed");
                 }
                 responseType = "transcriptionFinished";
+                break;
+            case "timeout":
+                this.sendRouter.sendText(this.sendRouter.receiver, "Unable to reach user. Call was not picked up");
+                responseType = "noPick";
+                break;
+            case "reject":
+                this.sendRouter.sendText(this.sendRouter.receiver, "The person you are trying to reach has REJECTED your call");
+                responseType = "noPick";
                 break;
             case "hangup":
                 responseType = "hangup";
@@ -75,7 +83,7 @@ class CallbackRouter {
         var selectionOptions = {
             "maxDigits": 1,
             "prompt": {
-                "sentence": "This is the check in service. To send a quick check in, press 1. To send a custom recorded message, press 2. After recording, press pound to stop recording. Then you may hang up."
+                "sentence": "This is the check in service from Mom. To send a quick check in, press 1. To send a custom recorded message, press 2. After recording, press pound to stop recording. Then you may hang up."
             }
         }
         return this.bwClient.Call.createGather(callId, selectionOptions);

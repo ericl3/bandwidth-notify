@@ -1,12 +1,15 @@
 const express = require("express");
 const numbers = require("../config/numbers");
 const urls = require("../config/urls");
+const main = require("../app");
 
 // is this for sending calls as well? I suppose that would make sense.
 class SendRouter {
     constructor(BandwidthClient) {
         this.bwClient = BandwidthClient;
         this.router = express.Router();
+        this.receiver;
+        this.to;
         this.router.post("/text", this.sendText.bind(this));
         this.router.post("/call", this.createCall.bind(this));
     }
@@ -23,12 +26,16 @@ class SendRouter {
     }
 
     createCall(req, res) {
+        var fromNumber = req.body.fromNumber.replace(/\D/g, '');
+        var toNumber = req.body.toNumber.replace(/\D/g, '');
+        this.receiver = fromNumber;
+        this.to = toNumber;
         this.bwClient.Call.create({
             from: numbers.appNumber,
-            to: req.body.to,
+            to: this.to,
             callbackUrl: urls.callbackUrlVoice
         }).then(call => console.log(call.id));
-        res.json({ msg: "call successfull" });
+        res.render("call-sent");
     }
 }
 

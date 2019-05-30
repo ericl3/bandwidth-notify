@@ -9,5 +9,6 @@ module.exports = {
     hangup: "Hung up :(",
     endRecording: "Recording ended",
     recordingFinished: "Finished recording. Transcription occurs",
-    transcriptionFinished: "Transcription done"
+    transcriptionFinished: "Transcription done",
+    noPick: "not picked up / rejected"
 };
