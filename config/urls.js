@@ -1,3 +1,3 @@
 module.exports = {
-    callbackUrlVoice: "https://elin.ngrok.io/callback/voice"
+    callbackUrlVoice: "https://bw-notify.herokuapp.com/callback/voice"
 }
